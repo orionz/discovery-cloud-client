@@ -1,0 +1,25 @@
+{
+  "name": "discovery-cloud-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bs58": "^4.0.1",
+    "debug": "^4.1.0",
+    "hypercore": "^6.20.2",
+    "ts-node": "^7.0.1",
+    "ws": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.31",
+    "@types/node": "^10.12.2",
+    "@types/ws": "^6.0.1",
+    "typescript": "^3.1.6"
+  }
+}
