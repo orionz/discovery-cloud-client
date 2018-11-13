@@ -15,7 +15,7 @@ A simple discovery cloud client library that can be paired with the [discovery-c
   const repo = new Repo({ storage: ram })
 
   const discovery = new Client({
-    url: "wss://discovery-cloud.herokuapp.com",
+    url: "wss://fish-monger-9999.herokuapp.com",
     id: repo.id,
     stream: repo.stream,
   })
