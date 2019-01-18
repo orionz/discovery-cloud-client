@@ -21,6 +21,9 @@ class ClientPeer {
         this.id = id;
         this.stream = stream;
     }
+    has(channel) {
+        return this.connections.has(channel);
+    }
     add(channel) {
         if (this.connections.has(channel))
             return;
@@ -52,6 +55,14 @@ class ClientPeer {
             log("socket.onclose");
             this.remove(channel);
         });
+    }
+    close(channel) {
+        const socket = this.connections.get(channel);
+        if (socket) {
+            log("%s closing socket: %s", this.id, channel);
+            socket._destroy(null, () => { });
+            this.connections.delete(channel);
+        }
     }
     remove(channel) {
         log("%s removing connection: %s", this.id, channel);

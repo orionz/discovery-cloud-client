@@ -21,7 +21,9 @@ export default class ClientPeer {
     stream: (info: Info) => Duplex;
     connections: Map<string, WebSocketStream>;
     constructor({ url, id, stream }: Options);
+    has(channel: string): boolean;
     add(channel: string): void;
+    close(channel: string): void;
     remove(channel: string): void;
 }
 export {};

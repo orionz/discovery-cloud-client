@@ -33,6 +33,10 @@ export default class ClientPeer {
     this.stream = stream
   }
 
+  has(channel: string) : boolean {
+    return this.connections.has(channel)
+  }
+
   add(channel: string) {
     if (this.connections.has(channel)) return
 
@@ -71,6 +75,15 @@ export default class ClientPeer {
       log("socket.onclose")
       this.remove(channel)
     })
+  }
+
+  close(channel: string) {
+    const socket = this.connections.get(channel)
+    if (socket) {
+      log("%s closing socket: %s", this.id, channel)
+      socket._destroy(null, () => {})
+      this.connections.delete(channel)
+    }
   }
 
   remove(channel: string) {

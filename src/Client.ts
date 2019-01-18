@@ -59,6 +59,9 @@ export default class DiscoveryCloudClient extends EventEmitter {
 
     const channel = Base58.encode(channelBuffer)
     this.channels.delete(channel)
+    this.peers.forEach((peer) => {
+      if (peer.has(channel)) peer.close(channel)
+    })
 
     if (this.discovery.readyState === WebSocket.OPEN) {
       this.send({
